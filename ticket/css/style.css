@@ -1,0 +1,23 @@
+body {background:#f1f1f1; box-sizing:border-box; font-family:Times New Roman;}
+#wrapper {width:1000px; background:#fff; border-left:1px solid #ccc; border-right:1px solid #ccc; margin:0px auto;}
+#header {padding:10px 30px; border-bottom:1px solid #ccc;}
+
+#logo {font-size:25px; border-bottom:1px solid #f1f1f1;}
+#menu {margin:5px 0px; padding:5px 0 0 0;}
+
+#content {padding:10px 15px;}
+#footer {padding:10px 30px; border-top:1px solid #ccc; text-align:right;}
+
+h1 {font-size:22px;}
+h2 {font-size:20px;}
+
+.login-fields {margin:10px 0;}
+.login-fields label {width:70px; display:inline-block;}
+
+.profile {}
+.profile div {border-bottom:1px solid #f1f1f1; padding:5px 0;}
+.profile span {width:70px; display:inline-block;}
+
+.profile-edit {}
+.profile-edit div {border-bottom:1px solid #f1f1f1; padding:5px 0;}
+.profile-edit span {width:200px; display:inline-block;}
