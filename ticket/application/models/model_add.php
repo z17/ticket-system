@@ -4,6 +4,7 @@ class Model_Add extends Model
     public function get_data()
     {		
 		$data['text'] = isset($_POST['text']) ? $_POST['text'] : NULL;	
+		$data['topicname'] = isset($_POST['topicname']) ? $_POST['topicname'] : NULL;	
 		$data['fl'] = isset($_POST['fl']) ? $_POST['fl'] : false;	
 		
 		if (!isset($_SESSION['userid']))
@@ -15,9 +16,6 @@ class Model_Add extends Model
 			$data['userFl'] = true;
 			
 			$user = $this -> user;
-			$data['text'] = isset($_POST['text']) ? $_POST['text'] : NULL;	
-			$data['topicname'] = isset($_POST['topicname']) ? $_POST['topicname'] : NULL;	
-			$data['fl'] = isset($_POST['fl']) ? $_POST['fl'] : false;
 			
 			$data['errors'] = array();	
 			
@@ -25,7 +23,17 @@ class Model_Add extends Model
 			{					
 				if ($user['balance'] < $this -> price)
 				{					
-					$str = "У вас на счету недостаточно денег для отправки вопроса";
+					$str = "У вас на счету недостаточно средств для отправки вопроса";
+					array_push($data['errors'],$str);
+				}
+				if (strlen($data['topicname']) == 0)
+				{					
+					$str = "Заполните тему вопроса";
+					array_push($data['errors'],$str);
+				}
+				if (strlen($data['text']) < 3)
+				{					
+					$str = "Заполните текст вопроса";
 					array_push($data['errors'],$str);
 				}
 				if (empty($data['errors']))
@@ -56,6 +64,7 @@ class Model_Add extends Model
 				else
 				{
 					$data['message'] = "Ошибка отправки:";
+					$data['fl'] = false; // выводим форму если ошибка
 					
 				}
 			}
@@ -67,7 +76,7 @@ class Model_Add extends Model
 			}
 			else	
 			{
-				$data['message'] = '<h2>Задайте вопрос</h2>';
+				$data['message'] = '<h1>Задайте вопрос</h1>';
 				
 				$data['pay']['mrh_login'] = $this -> mrh_login;
 				$data['pay']['out_summ'] = $this -> price;

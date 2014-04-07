@@ -1,4 +1,4 @@
-<?=$data['message']?><br>
+<?=$data['message']?>
 <div class="itemComments"><ul class="itemCommentsList">
 <?php
 if (!empty($data['posts']))

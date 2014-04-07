@@ -47,6 +47,7 @@ class Model_Register extends Model
 			if (empty($data['errors']))
 			{
 				// если ошибок нет - регистрируем
+				$data['pass1'] = md5(md5($data['pass1']).$this -> passkey);
 				$this -> base -> addUser($data['email'],$data['pass1'],$data['name'],$data['phone']);
 				$data['message'] = "Регистрация прошла успешно, <a href=\"/ticket/login\">войти</a>";	
 				$data['formFl'] = false;

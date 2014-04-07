@@ -15,7 +15,7 @@ class Model_Login extends Model
 				$user = $this -> base -> getUser($data['email']);
 				if ($user)
 				{
-					if ($data['password'] == $user['password'])
+					if (md5(md5($data['password']).$this -> passkey) == $user['password'])
 					{
 						$data['message'] = 'Вход выполнен, <a href="/ticket/profile">Профиль</a>';
 						$data['formFl'] = false;

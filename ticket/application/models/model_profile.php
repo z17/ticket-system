@@ -61,8 +61,7 @@ class Model_Profile extends Model
 				$str = "Имя не установлено";
 				array_push($data['errors'],$str);
 			}
-			
-			if ($data['password'] != $data['user']['password'])
+			if (md5(md5($data['password']).$this -> passkey) != $data['user']['password'])
 			{
 				$str = "Вы ввели неверный пароль";
 				array_push($data['errors'],$str);
@@ -70,6 +69,7 @@ class Model_Profile extends Model
 			if (empty($data['errors']))
 			{
 				// если ошибок нет - обновляем
+				$data['newPass1'] = md5(md5($data['newPass1']).$this -> passkey);
 				$this -> base -> updateUser($data['user']['email'],$data['newPass1'],$data['newName'],$data['newPhone']);
 				$data['message'] = "Профиль отредактирован";	
 				$data['user']['name'] = $data['newName'];	// для обновления вывода в форме

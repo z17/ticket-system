@@ -14,14 +14,15 @@ class Model
 	{ 
 		session_start();
 		
-		$file = parse_ini_file("/application/conf.ini");		
-		$this->email = $file['email'];
-		$this->price = $file['price'];
-		$this->mrh_login = $file['mrh_login'];
-		$this->culture = $file['culture'];		
-		$this->mrh_pass1 = $file['mrh_pass1'];		
-		$this->mrh_pass2 = $file['mrh_pass2'];
-		
+		$file = parse_ini_file("/application/conf.ini");
+		$this -> email = $file['email'];
+		$this -> price = $file['price'];
+		$this -> mrh_login = $file['mrh_login'];
+		$this -> culture = $file['culture'];
+		$this -> mrh_pass1 = $file['mrh_pass1'];
+		$this -> mrh_pass2 = $file['mrh_pass2'];
+		$this -> passkey = $file['passkey'];
+				
 		$this -> base = new Base;
 		if (isset($_SESSION['userid']))
 		{
